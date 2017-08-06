@@ -1,6 +1,7 @@
 const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin'); // create index.html injecting index_bundle.js in dist folder
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
 const config = {
   entry: './app/client.js',
@@ -9,6 +10,7 @@ const config = {
     filename: 'bundle.js',
     publicPath: '/'
   },
+  devtool: 'source-map',
   devServer: {
     historyApiFallback: true,
   },
@@ -105,6 +107,11 @@ const config = {
     // new HtmlWebpackPlugin({
     //   template: 'app/index.html'
     // }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
     new ExtractTextPlugin('style.css')
   ]
 };

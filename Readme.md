@@ -1,10 +1,10 @@
-React can be rendered *isomorphically*, which means that it can be in platforms other than the browser. This means we can render our UI on the server before it ever gets to the browser. Taking advantage of server rendering, we can improve the performance, portability, and security of our applications.
-
 # Isomorphism versus Universalism
 
-The terms *isomorphic* and *universal* are often used to describe applications that work on both the client and the server. Although these terms are used interchangeably to describe the same application, there is a subtle difference between them that is worth investigating. 
+React can be rendered *isomorphically*, which means that it can be in platforms other than the browser. This means we can render our UI on the server before it ever gets to the browser. Taking advantage of server rendering, we can improve the performance, portability, and security of our applications.
 
-- *Isomorphic* applications are applications that can be rendered on multiple platforms. 
+The terms *isomorphic* and *universal* are often used to describe applications that work on both the client and the server. Although these terms are used interchangeably to describe the same application, there is a subtle difference between them that is worth investigating.
+
+- *Isomorphic* applications are applications that can be rendered on multiple platforms.
 - *Universal* code means that the exact same code can run in multiple environments. Universal JavaScript  can run on the server or in the browser without error
 
 **Universal example:** work in both client and server
@@ -29,7 +29,7 @@ var printNames = response => {
 }
 
 if (typeof window !== 'undefined') {
-  
+
   const request = new XMLHttpRequest()
   request.open('GET', 'http://api.randomuser.me/?nat=US&results=10')
   request.onload = () => printNames(request.response)
@@ -53,7 +53,7 @@ if (typeof window !== 'undefined') {
 
 it contains universal JavaScript. All of the code is not universal, but the file itself will work in both environments. It can run it with Node.js or include it in a `<script>` tag in the browser.
 
-### Isomorphic-fetch
+## Isomorphic-fetch
 
 We have been using `isomorphic-fetch` over other implementations of the WHATWG fetch function because `isomorphic-fetch` works in multiple environments.
 
@@ -71,8 +71,8 @@ Sure it is: remember, the JSX compiles to JavaScript. The `Star` component is si
 ```jsx
 const Star = ({ selected=false, onClick=f=>f }) =>
     React.createElement(
-        "div", 
-        { 
+        "div",
+        {
             className: selected ? "star selected" : "star",
             onClick: onClick
         }
@@ -103,9 +103,7 @@ Another option is to create a webpack build for your backend code. webpack can e
 
 In order to run `babel-node`, there is a little bit of setup involved. First, we need to install the `babel-cli`, `babel-loader`, `babel-preset-es2015`, `babel-preset-react`:
 
-In order to run `babel-node`, there is a little bit of setup involved. First, we need to install the `babel-cli`, `babel-loader`, `babel-preset-es2015`, `babel-preset-react`:
-
-```Bash
+```bash
 npm install babel-cli babel-loader babel-preset-env babel-preset-react --save
 ```
 
